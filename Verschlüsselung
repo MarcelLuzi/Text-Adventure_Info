@@ -1,0 +1,88 @@
+def Text_Num(text):
+    TList = []
+    NList = []
+    länge = len(text)
+    for I in range (0,länge,1):
+        TList.append(text[I])
+    for I in range (0,länge,1):
+        NList.append(ord(TList[I]))
+    return NList
+
+# Input_List
+def Input_List():
+    a = input()
+    a = a.replace(",","")
+    List = []
+    List = [int (item) for item in a.split()]
+    return List
+# Input_List ende
+
+# Verschlüsselung
+def Verschlüsselung(Schlüssel):
+    Nachricht = Text_Num(input())
+    länge = len(Nachricht)
+    Verschlüsselt = []
+    e = Schlüssel[1]
+    n = Schlüssel[0]
+    for I in range (0,länge,1):
+        Verschlüsselt.append((Nachricht[I]**e)%n)
+    print(Verschlüsselt)
+# Verschlüsselung ende
+
+Schlüssel = 0
+
+while True:
+    Ans_1 = input("""
+    [1] Möchtest du durch die Tür, Mensch?
+    [X] Den Raum weiter untersuchen.
+    """)
+    check = False
+    if Ans_1 == "1":
+        while True:
+            Ans_2 = input("""
+            [1] Für sowas brauche ich Zahlen, Mensch!
+            [X] Raum weiter untersuchen.
+            """)
+            if Ans_2 == "1":
+                print("Dann gib mal die Zahlen ein!")
+                Schlüssel = Input_List()
+                break
+            elif Ans_2 == "X".lower():
+                check = True
+                print("Ist das schon zu kompliziert für dich? Ihr Menschen seid eine reine Enttäuschung..")
+                break
+            else:
+                print("Ihr Menschen wisst aber schon was Zahlen sind, oder?")
+                
+    elif Ans_1 == "X".lower():
+        print("Dann bleib hier und starr gegen die Wand!")
+        break
+        
+    elif check:
+        break
+        
+    else:
+        print("Was soll das, Mensch?!")
+        break
+    
+    if check:
+        break
+        
+    elif not check:
+        Ans_3 = input("""
+        [1] Nur mit welchem Code öffnet sich die Tür..?
+
+            Kleiner Tipp, ihr Menschen seid ja schließlich nicht die Hellsten:
+            "Sesam öffne dich", ist es nicht..
+
+        [X] Den Raum weiter untersuchen.
+        """)
+        if Ans_3 == "1":
+            print("Denkst du, du kennst den Code? Würde mich bei deiner Intelligenz überraschen..")
+            Verschlüsselung(Schlüssel)
+            break
+        elif Ans_3 == "X".lower():
+            print("Bist du wirklich zu dumm dafür? Der Code ist das was du suchst!")
+            break
+        else:
+            print("Ihr Menschen seid wohl doch blöder, als ich mir vorstellen konnte..")
